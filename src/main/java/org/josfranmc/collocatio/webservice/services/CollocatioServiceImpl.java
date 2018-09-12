@@ -146,12 +146,12 @@ public class CollocatioServiceImpl implements CollocatioService {
 	 * Elimina una colocación de la base de datos especificada.
 	 * @param id identificador del registro a eliinar
 	 * @param dbname base de datos donde guardar
-	 * @return la colocación guardada
+	 * @return número de registros afectados
 	 */
 	@Override
-	public void deleteCollocation(Long id, String dbname) {
+	public long deleteCollocation(Long id, String dbname) {
 		collocatioService.setDataBase(getDataBaseName(dbname));
-		collocatioService.deleteCollocation(id);
+		return collocatioService.deleteCollocation(id);
 	}
 	
 	/**

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @see QueryType
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/collocatio")
 public class CollocatioController {
 
@@ -160,11 +162,22 @@ public class CollocatioController {
 	public ResponseEntity<Response> deleteCollocatio(@PathVariable("id") Long id, 
 			                                         @RequestParam(value="db", required=false) String dbname)
 	{
-		collocatioService.deleteCollocation(id, dbname);
+		String status = null;
+		String message = null;
 		
-		response.setPath("/collocatio/delete/id/");
-		response.setStatus(HttpStatus.OK.toString());
-		response.setMessage("Eliminación realizada");
+		long result = collocatioService.deleteCollocation(id, dbname);
+		
+		if (result > 0) {
+			status = HttpStatus.OK.toString();
+			message = "Eliminación realizada";
+		} else {
+			status = HttpStatus.OK.toString();
+			message = "Ningún cambio realizado";
+		}
+		
+		response.setPath("/collocatio/delete/{id}/");
+		response.setStatus(status);
+		response.setMessage(message);
 		response.setError(null);
 		response.setTimestamp(getCurrentTime());
 

@@ -12,6 +12,7 @@ import org.josfranmc.collocatio.service.domain.Collocatio;
  * @version 1.0
  * @see ParamsAlgorithm
  * @see QueryType
+ * @see Collocatio
  */
 public interface CollocatioService {
 	
@@ -38,6 +39,8 @@ public interface CollocatioService {
 	 * @param offset página a obtener
 	 * @param size  cantidad de registros de la página
 	 * @param db nombre de la base de datos a la que consultar
+	 * @return lista con las colocaciones recuperadas
+	 * @see Collocatio
 	 */
 	public List<Collocatio> findCollocations(String queryType, List<String> words, int offset, int size, String db);	
 
@@ -54,6 +57,7 @@ public interface CollocatioService {
 	 * Elimina una colocación de la base de datos especificada.
 	 * @param id identificador del registro a eliinar
 	 * @param dbname base de datos donde eliminar
+	 * @return número de registros afectados
 	 */
-	public void deleteCollocation(Long id, String dbname);
+	public long deleteCollocation(Long id, String dbname);
 }
