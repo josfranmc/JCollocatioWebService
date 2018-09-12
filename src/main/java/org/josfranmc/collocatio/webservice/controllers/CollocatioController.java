@@ -175,7 +175,7 @@ public class CollocatioController {
 			message = "Ningún cambio realizado";
 		}
 		
-		response.setPath("/collocatio/delete/{id}/");
+		response.setPath("/collocatio/delete/" + id);
 		response.setStatus(status);
 		response.setMessage(message);
 		response.setError(null);
@@ -183,7 +183,26 @@ public class CollocatioController {
 
 		return  new ResponseEntity<Response>(response, HttpStatus.OK);
 	}	
-	
+
+	/**
+	 * Elimina una colocación de la base de datos.
+	 * @param db nombre de la base de datos a consultar (por defecto se usa col_default)
+	 * @return un JSON con el resultado del proceso
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/db/delete/{dbname}", method = RequestMethod.DELETE)
+	public ResponseEntity<Response> deleteDataBase(@PathVariable("dbname") String dbname) {
+
+		collocatioService.deleteDataBase(dbname);
+
+		response.setPath("/collocatio/db/delete/" + dbname);
+		response.setStatus(HttpStatus.OK.toString());
+		response.setMessage("Proceso realizado");
+		response.setError(null);
+		response.setTimestamp(getCurrentTime());
+
+		return  new ResponseEntity<Response>(response, HttpStatus.OK);
+	}	
 	
 	private Instant getCurrentTime() {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());

@@ -162,4 +162,13 @@ public class CollocatioServiceImpl implements CollocatioService {
 	private String getDataBaseName(String db) {
 		return (db == null || db.isEmpty()) ? ConnectionFactory.DEFAULT_DB : db;
 	}
+
+	/**
+	 * Elimina una base de datos.
+	 * @param dbname identificador del registro a eliminar
+	 */
+	@Override
+	public void deleteDataBase(String dbname) {
+		collocatioService.deleteDataBase(dbname);
+	}
 }
