@@ -64,7 +64,6 @@ public interface CollocatioService {
 	/**
 	 * Elimina una base de datos especificada.
 	 * @param dbname base de datos a eliminar
-	 * @return número de registros afectados
 	 */
 	public void deleteDataBase(String dbname);
 }

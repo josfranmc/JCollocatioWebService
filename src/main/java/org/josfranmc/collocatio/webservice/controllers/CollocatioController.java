@@ -185,8 +185,8 @@ public class CollocatioController {
 	}	
 
 	/**
-	 * Elimina una colocación de la base de datos.
-	 * @param db nombre de la base de datos a consultar (por defecto se usa col_default)
+	 * Elimina una base de datos.
+	 * @param dbname nombre de la base de datos a eliminar
 	 * @return un JSON con el resultado del proceso
 	 */
 	@ResponseBody

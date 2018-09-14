@@ -3,6 +3,7 @@ package org.josfranmc.collocatio.webservice.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ import org.josfranmc.gutenberg.catalog.Book;
  * @see DownloadParameters
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/gutenberg")
 public class GutenbergController {
 
@@ -75,7 +77,7 @@ public class GutenbergController {
 		response.setPath("/gutenberg/download");
 		response.setStatus(HttpStatus.OK.toString());
 		response.setMessage("Descarga realizada");
-		response.setError(null);
+		response.setError("");
 		response.setTimestamp(getCurrentTime());
 		
 		return  new ResponseEntity<Response>(response, HttpStatus.OK);
@@ -101,7 +103,7 @@ public class GutenbergController {
 		response.setPath("/gutenberg/catalog/create");
 		response.setStatus(HttpStatus.OK.toString());
 		response.setMessage("Cargados datos en base de datos: " + catalogSevice.getPathDb());
-		response.setError(null);
+		response.setError("");
 		response.setTimestamp(getCurrentTime());
 		
 		return  new ResponseEntity<Response>(response, HttpStatus.OK);
@@ -117,11 +119,6 @@ public class GutenbergController {
 		Book book = catalogSevice.getBook(id);
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 	}
-	/*
-	@ExceptionHandler(OfertaInexistenteException.class)
-	public ResponseEntity<String> gestionarNoExistentes(OfertaInexistenteException oie) {
-	    return new ResponseEntity<String>(oie.getMessage(), HttpStatus.NOT_FOUND);
-	}*/
 	
 	private Instant getCurrentTime() {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());

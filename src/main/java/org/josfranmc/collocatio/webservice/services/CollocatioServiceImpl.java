@@ -165,7 +165,7 @@ public class CollocatioServiceImpl implements CollocatioService {
 
 	/**
 	 * Elimina una base de datos.
-	 * @param dbname identificador del registro a eliminar
+	 * @param dbname nombre de la base de datos a eliminar
 	 */
 	@Override
 	public void deleteDataBase(String dbname) {
