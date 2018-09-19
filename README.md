@@ -17,6 +17,8 @@ java -jar JCollocatioWebService-1.0.jar
 ## Notas  
 La aplicación se ejecuta en el puerto 8028.
 
+Para poder construir el proyecto es necesario instalar previamente los proyectos JCollocatio, JGutenbergDownload y JGutenbergCatalog.
+
 La base de datos sobre los libros del proyecto Gutenberg se guarda en la carpe db/HSQLDB.
 
 El fichero de log generado se guarda en la carpeta log.
