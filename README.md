@@ -8,6 +8,7 @@ Los servicios web desplegados hacen uso de las funcionalidades desarrolladas en 
 ## Contenido
 + javadoc: documentación del código
 + src: Código fuente
++ web-client: prototipo de cliente web para probar los servicios web
 
 ## Uso
 Desde línea de comandos:
